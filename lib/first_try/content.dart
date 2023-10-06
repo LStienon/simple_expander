@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:simple_expander/first_try/simple_expander_first.dart';
 import 'tile.dart';
 
 class SimpleExpanderContent extends StatefulWidget {
   final List<SimpleExpanderTile> tiles;
-  final double curve;
 
   const SimpleExpanderContent({super.key,
     required this.tiles,
-    required this.curve
   });
 
   @override
@@ -29,7 +28,7 @@ class _SimpleExpanderContentState extends State<SimpleExpanderContent> {
             subtitle: oneTile.subtitle,
             onTap: oneTile.onTap,
             lastInList: lastOne,
-            curve: widget.curve,
+            tileColor: oneTile.tileColor,
           );
         }).toList(),
       ),
