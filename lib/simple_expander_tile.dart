@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_expander/first_try/simple_expander_first.dart';
+import 'package:simple_expander/simple_expander_base.dart';
 
 typedef OnTapFunction = Future<void> Function();
 

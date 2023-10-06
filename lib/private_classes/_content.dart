@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_expander/first_try/simple_expander_first.dart';
-import 'tile.dart';
+import '../simple_expander_tile.dart';
 
 class SimpleExpanderContent extends StatefulWidget {
   final List<SimpleExpanderTile> tiles;
@@ -29,6 +28,7 @@ class _SimpleExpanderContentState extends State<SimpleExpanderContent> {
             onTap: oneTile.onTap,
             lastInList: lastOne,
             tileColor: oneTile.tileColor,
+            trailing: oneTile.trailing,
           );
         }).toList(),
       ),

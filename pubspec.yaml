@@ -1,7 +1,7 @@
 name: simple_expander
 description: "Simple custom expansion tile"
-version: 0.0.1
-homepage:
+version: 0.0.3
+repository: https://github.com/LStienon/simple_expander.git
 
 environment:
   sdk: '>=3.2.0-131.0.dev <4.0.0'
@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_animate: ^4.2.0+1
   font_awesome_flutter: ^10.5.0
 
 dev_dependencies:
@@ -57,3 +56,6 @@ flutter:
 
 example:
   main: example/lib/main.dart
+
+platforms:
+  android:

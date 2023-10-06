@@ -1,23 +1,18 @@
-library simple_expander;
-
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "package:simple_expander/first_try/content.dart";
+import "package:simple_expander/private_classes/_content.dart";
 
-import "header.dart";
-import "tile.dart";
+import 'private_classes/_header.dart';
+import 'simple_expander_tile.dart';
 
-
-
-
-class AnimatedSimpleExpander extends StatefulWidget {
+class SimpleExpander extends StatefulWidget {
   final String headerString;
   final Widget? headerTrailing;
   final List<SimpleExpanderTile> tiles;
   final double? curve;
   final double? baseHeight;
 
-  const AnimatedSimpleExpander({super.key,
+  const SimpleExpander({super.key,
     required this.headerString,
     required this.tiles,
     this.headerTrailing,
@@ -26,12 +21,12 @@ class AnimatedSimpleExpander extends StatefulWidget {
   });
 
   @override
-  State<AnimatedSimpleExpander> createState() => _AnimatedSimpleExpanderState();
+  State<SimpleExpander> createState() => _SimpleExpanderState();
 }
 
-class _AnimatedSimpleExpanderState extends State<AnimatedSimpleExpander> {
+class _SimpleExpanderState extends State<SimpleExpander> {
   final GlobalKey _key = GlobalKey();
-  bool _isExpanded = false;
+  bool _isExpanded = false; // TODO : ADD INITIALLY EXPANDED ARG
   double? _contentHeight = 70;
 
   @override
@@ -86,9 +81,9 @@ class _AnimatedSimpleExpanderState extends State<AnimatedSimpleExpander> {
 }
 
 
+
+
+
 double baseHeight = 70;
 double curve = 20; // MADE TO HAVE THE SAME CURVE IN PARENT AND CHILD WIDGET
-
-
-
 
