@@ -1,8 +1,10 @@
 import 'dart:developer';
 
-import 'package:example/SimpleObject.dart';
+import 'package:example/simple_object.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_expander/simple_expander.dart';
+import 'package:simple_expander/first_try/simple_expander_first.dart';
+import 'package:simple_expander/first_try/tile.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -50,14 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SimpleExpander(
+              AnimatedSimpleExpander(
                 headerString: "Header title",
                 tiles: testValues.map((e) => SimpleExpanderTile(
                   title: e.name,
                   subtitle: e.secondName,
                   onTap: () async {
                     log('henlo to number ${e.id}');
-                  }
+                  },
+                  curve: 20,
                 )).toList(),
               )
             ],
