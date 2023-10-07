@@ -1,6 +1,6 @@
 name: simple_expander
 description: "Simple custom expansion tile"
-version: 0.0.3
+version: 0.0.4
 repository: https://github.com/LStienon/simple_expander.git
 
 environment:

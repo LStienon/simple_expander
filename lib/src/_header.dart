@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -10,13 +9,16 @@ class SimpleExpanderHeader extends StatefulWidget {
   final IsExpandedFunction isExpanded;
   final Color headerColor;
   final Color headerTextColor;
+  final double headerHeight;
 
+  // EVERYTHING REQUIRED BECAUSE WILL BE USED IN MY PACKAGE AND NOWHERE ELSE
   const SimpleExpanderHeader({super.key,
     required this.title,
     required this.isExpanded,
-    this.trailing,
-    this.headerColor = CupertinoColors.systemGrey,
-    this.headerTextColor = Colors.white
+    required this.trailing,
+    required this.headerColor,
+    required this.headerTextColor,
+    required this.headerHeight,
   });
 
   @override
@@ -28,7 +30,7 @@ class _SimpleExpanderHeaderState extends State<SimpleExpanderHeader> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(15),
-      height: 70,
+      height: widget.headerHeight,
       color: widget.headerColor,
       child: Row(
         children: [
@@ -37,14 +39,17 @@ class _SimpleExpanderHeaderState extends State<SimpleExpanderHeader> {
             color: Colors.white,
           ),
           const SizedBox(width: 15,),
-          Text(
-            widget.title,
-            style: TextStyle(
-              color: widget.headerTextColor,
-              fontSize: 20,
+          Expanded(
+            child: Text(
+              widget.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: widget.headerTextColor,
+                fontSize: 20,
+              ),
             ),
           ),
-          const Spacer(),
           widget.trailing ?? const SizedBox()
         ],
       ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import '../simple_expander_tile.dart';
+import 'tile.dart';
 
 class SimpleExpanderContent extends StatefulWidget {
   final List<SimpleExpanderTile> tiles;
+  final double baseHeight;
 
   const SimpleExpanderContent({super.key,
     required this.tiles,
+    required this.baseHeight
   });
 
   @override
@@ -29,6 +31,8 @@ class _SimpleExpanderContentState extends State<SimpleExpanderContent> {
             lastInList: lastOne,
             tileColor: oneTile.tileColor,
             trailing: oneTile.trailing,
+            showPopupMenuFunction: oneTile.showPopupMenuFunction,
+            height: widget.baseHeight,
           );
         }).toList(),
       ),

@@ -1,26 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_expander/simple_expander_base.dart';
 
-typedef OnTapFunction = Future<void> Function();
+typedef OnTapCallback = Future<void> Function();
+typedef ShowPopupMenuCallback = void Function();
 
 class SimpleExpanderTile extends StatefulWidget {
   final String title;
   final String? subtitle;
-  final OnTapFunction onTap;
+  final OnTapCallback onTap;
+  final ShowPopupMenuCallback? showPopupMenuFunction;
   final Widget? trailing;
   final bool lastInList;
   final Color tileColor;
   final Color separatorColor;
+  final double? height;
 
   const SimpleExpanderTile({super.key,
     required this.title,
-    this.subtitle,
     required this.onTap,
     this.tileColor = CupertinoColors.systemGrey5,
-    this.trailing,
     this.lastInList = false,
-    this.separatorColor = CupertinoColors.systemGrey
+    this.separatorColor = CupertinoColors.systemGrey,
+    this.height,
+    this.subtitle,
+    this.trailing,
+    this.showPopupMenuFunction,
   });
 
   @override
@@ -28,21 +32,26 @@ class SimpleExpanderTile extends StatefulWidget {
 }
 
 class _SimpleExpanderTileState extends State<SimpleExpanderTile> {
+
+  void _updatePopupPosition(Offset offset) {
+    double left = offset.dx;
+    double top = offset.dy;
+    currentPopupPosition = RelativeRect.fromLTRB(left-50, top-50, left, top); // ARBITRAIREMENT UN PEU PLUS CENTRE
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
           onTapDown: (TapDownDetails details) {
-            // FOR EVENTUAL POPUP MENU IMPLEMENTATION (UPDATE ITS APPEARING POSITION)
+            _updatePopupPosition(details.globalPosition);
           },
-          onLongPress: () {
-            // FOR EVENTUAL POPUP MENU IMPLEMENTATION (ACTUALLY CALL THE SHOW POP MENU METHOD)
-          },
+          onLongPress: widget.showPopupMenuFunction,
           onTap: widget.onTap,
           child: Container(
             color: widget.tileColor,
-            height: baseHeight,
+            height: widget.height,
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.only(right: 20, left: 20),
@@ -58,13 +67,17 @@ class _SimpleExpanderTileState extends State<SimpleExpanderTile> {
                       children: [
                         Text(
                           widget.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             fontSize: 20
                           ),
                         ),
                         if (widget.subtitle != null)
                           Text(
-                            widget.subtitle!
+                            widget.subtitle!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                       ],
                     ),
@@ -72,10 +85,7 @@ class _SimpleExpanderTileState extends State<SimpleExpanderTile> {
 
                   // TRAILING PART
                   if (widget.trailing != null)
-                    Expanded(
-                      flex: 1,
-                      child: widget.trailing!,
-                    )
+                    widget.trailing!
 
                 ],
               ),
@@ -88,3 +98,6 @@ class _SimpleExpanderTileState extends State<SimpleExpanderTile> {
     );
   }
 }
+
+
+late RelativeRect currentPopupPosition;

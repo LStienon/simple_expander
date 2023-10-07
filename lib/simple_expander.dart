@@ -1,2 +1,3 @@
-export './simple_expander_base.dart';
-export './simple_expander_tile.dart';
+library simple_expander;
+export 'src/base.dart';
+export 'src/tile.dart';
