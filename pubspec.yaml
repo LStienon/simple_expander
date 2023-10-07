@@ -1,10 +1,10 @@
 name: simple_expander
-description: "Simple custom expansion tile"
-version: 0.0.4
+description: "This package is composed of a simple expansion tile that I made myself because the existing ones didn't satisfied me for a specific project I have"
+version: 0.1.2
 repository: https://github.com/LStienon/simple_expander.git
 
 environment:
-  sdk: '>=3.2.0-131.0.dev <4.0.0'
+  sdk: '>=3.1.2 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -16,12 +16,19 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  lints: ^2.1.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+
+
+platforms:
+  android:
+  web:
+  windows:
 
   # To add assets to your package, add an assets section, like this:
   # assets:
@@ -57,5 +64,4 @@ flutter:
 example:
   main: example/lib/main.dart
 
-platforms:
-  android:
+

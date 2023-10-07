@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:simple_expander/src/_content.dart';
@@ -15,7 +13,7 @@ class SimpleExpander extends StatefulWidget {
   final Color headerColor;
   final Color headerTextColor;
   final List<SimpleExpanderTile> tiles;
-  final double? curve;
+  final double curve;
   final double baseHeight;
   final SaveExpandStateCallback? saveStateFunction;
   final bool initiallyExpanded;
@@ -30,7 +28,7 @@ class SimpleExpander extends StatefulWidget {
     this.initiallyExpanded = false,
     this.durationOnTiles = false,
     this.headerTrailing,
-    this.curve,
+    this.curve = 20,
     this.baseHeight = 70,
     this.saveStateFunction,
     this.headerColor = CupertinoColors.systemGrey,
@@ -49,12 +47,6 @@ class _SimpleExpanderState extends State<SimpleExpander> {
 
   @override
   void initState() {
-
-    // INITIALIZE SOME GLOBAL VALUES
-    if (widget.curve != null) {
-      curve = widget.curve!;
-    }
-
     _animationDuration = widget.durationOnTiles ? Duration(milliseconds: widget.tiles.length * widget.milliseconds) : Duration(milliseconds: widget.milliseconds);
 
     super.initState();
@@ -64,7 +56,9 @@ class _SimpleExpanderState extends State<SimpleExpander> {
 
     // THIS IS CALLED DIRECTLY AFTER BUILD SO WHEN CONTEXT IS FINALLY AVAILABLE
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _contentHeight = _isExpanded ? widget.baseHeight + _key.currentContext!.size!.height : widget.baseHeight;
+      setState(() {
+        _contentHeight = _isExpanded ? widget.baseHeight + _key.currentContext!.size!.height : widget.baseHeight;
+      });
     });
   }
 
@@ -95,7 +89,7 @@ class _SimpleExpanderState extends State<SimpleExpander> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(curve),
+      borderRadius: BorderRadius.circular(widget.curve),
       child: AnimatedContainer(
         duration: _animationDuration,
         height: _contentHeight,
@@ -127,10 +121,3 @@ class _SimpleExpanderState extends State<SimpleExpander> {
     );
   }
 }
-
-
-
-
-
-double curve = 20; // MADE TO HAVE THE SAME CURVE IN PARENT AND CHILD WIDGET
-
