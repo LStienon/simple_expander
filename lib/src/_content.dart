@@ -5,10 +5,8 @@ class SimpleExpanderContent extends StatefulWidget {
   final List<SimpleExpanderTile> tiles;
   final double baseHeight;
 
-  const SimpleExpanderContent({super.key,
-    required this.tiles,
-    required this.baseHeight
-  });
+  const SimpleExpanderContent(
+      {super.key, required this.tiles, required this.baseHeight});
 
   @override
   State<SimpleExpanderContent> createState() => _SimpleExpanderContentState();

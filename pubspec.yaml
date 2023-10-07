@@ -1,6 +1,6 @@
 name: simple_expander
 description: "This package is composed of a simple expansion tile that I made myself because the existing ones didn't satisfied me for a specific project I have"
-version: 0.1.2
+version: 0.1.3
 repository: https://github.com/LStienon/simple_expander.git
 
 environment:
@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.5.0
+
+example:
+  main: example
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +64,6 @@ platforms:
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
 
-example:
-  main: example/lib/main.dart
+
 
 

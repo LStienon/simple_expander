@@ -21,19 +21,19 @@ class SimpleExpander extends StatefulWidget {
   final int milliseconds;
   // IF TRUE, GIVEN DURATION IN MILLISECONDS IS TIME PASSED OVER EACH TILE AND NOT FOR THE WHOLE ANIMATION
 
-  const SimpleExpander({super.key,
-    required this.headerString,
-    required this.tiles,
-    this.milliseconds = 125,
-    this.initiallyExpanded = false,
-    this.durationOnTiles = false,
-    this.headerTrailing,
-    this.curve = 20,
-    this.baseHeight = 70,
-    this.saveStateFunction,
-    this.headerColor = CupertinoColors.systemGrey,
-    this.headerTextColor = Colors.white
-  });
+  const SimpleExpander(
+      {super.key,
+      required this.headerString,
+      required this.tiles,
+      this.milliseconds = 125,
+      this.initiallyExpanded = false,
+      this.durationOnTiles = false,
+      this.headerTrailing,
+      this.curve = 20,
+      this.baseHeight = 70,
+      this.saveStateFunction,
+      this.headerColor = CupertinoColors.systemGrey,
+      this.headerTextColor = Colors.white});
 
   @override
   State<SimpleExpander> createState() => _SimpleExpanderState();
@@ -47,7 +47,9 @@ class _SimpleExpanderState extends State<SimpleExpander> {
 
   @override
   void initState() {
-    _animationDuration = widget.durationOnTiles ? Duration(milliseconds: widget.tiles.length * widget.milliseconds) : Duration(milliseconds: widget.milliseconds);
+    _animationDuration = widget.durationOnTiles
+        ? Duration(milliseconds: widget.tiles.length * widget.milliseconds)
+        : Duration(milliseconds: widget.milliseconds);
 
     super.initState();
 
@@ -57,7 +59,9 @@ class _SimpleExpanderState extends State<SimpleExpander> {
     // THIS IS CALLED DIRECTLY AFTER BUILD SO WHEN CONTEXT IS FINALLY AVAILABLE
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
-        _contentHeight = _isExpanded ? widget.baseHeight + _key.currentContext!.size!.height : widget.baseHeight;
+        _contentHeight = _isExpanded
+            ? widget.baseHeight + _key.currentContext!.size!.height
+            : widget.baseHeight;
       });
     });
   }
@@ -65,7 +69,9 @@ class _SimpleExpanderState extends State<SimpleExpander> {
   void toggleExpand() {
     setState(() {
       _isExpanded = !_isExpanded;
-      _contentHeight = _isExpanded ? widget.baseHeight + _key.currentContext!.size!.height : widget.baseHeight;
+      _contentHeight = _isExpanded
+          ? widget.baseHeight + _key.currentContext!.size!.height
+          : widget.baseHeight;
     });
     if (widget.saveStateFunction != null) {
       widget.saveStateFunction!();
@@ -79,7 +85,9 @@ class _SimpleExpanderState extends State<SimpleExpander> {
       // WE FIRST NEED TO REBUILD TO GET THE NEW SIZE
       WidgetsBinding.instance.addPostFrameCallback((_) {
         setState(() {
-          _contentHeight = _isExpanded ? widget.baseHeight + _key.currentContext!.size!.height : widget.baseHeight;
+          _contentHeight = _isExpanded
+              ? widget.baseHeight + _key.currentContext!.size!.height
+              : widget.baseHeight;
         });
       });
     }

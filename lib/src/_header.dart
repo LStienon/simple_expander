@@ -12,7 +12,8 @@ class SimpleExpanderHeader extends StatefulWidget {
   final double headerHeight;
 
   // EVERYTHING REQUIRED BECAUSE WILL BE USED IN MY PACKAGE AND NOWHERE ELSE
-  const SimpleExpanderHeader({super.key,
+  const SimpleExpanderHeader({
+    super.key,
     required this.title,
     required this.isExpanded,
     required this.trailing,
@@ -35,10 +36,14 @@ class _SimpleExpanderHeaderState extends State<SimpleExpanderHeader> {
       child: Row(
         children: [
           Icon(
-            widget.isExpanded() ? FontAwesomeIcons.circleChevronUp : FontAwesomeIcons.circleChevronDown,
+            widget.isExpanded()
+                ? FontAwesomeIcons.circleChevronUp
+                : FontAwesomeIcons.circleChevronDown,
             color: Colors.white,
           ),
-          const SizedBox(width: 15,),
+          const SizedBox(
+            width: 15,
+          ),
           Expanded(
             child: Text(
               widget.title,
