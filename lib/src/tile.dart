@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 typedef OnTapCallback = Future<void> Function();
-typedef ShowPopupMenuCallback = void Function();
+typedef ShowPopupMenuCallback = void Function(RelativeRect);
 
 class SimpleExpanderTile extends StatefulWidget {
   final String title;
@@ -33,6 +33,8 @@ class SimpleExpanderTile extends StatefulWidget {
 }
 
 class _SimpleExpanderTileState extends State<SimpleExpanderTile> {
+  late RelativeRect currentPopupPosition;
+
   void _updatePopupPosition(Offset offset) {
     double left = offset.dx;
     double top = offset.dy;
@@ -48,7 +50,9 @@ class _SimpleExpanderTileState extends State<SimpleExpanderTile> {
             onTapDown: (TapDownDetails details) {
               _updatePopupPosition(details.globalPosition);
             },
-            onLongPress: widget.showPopupMenuFunction,
+            onLongPress: widget.showPopupMenuFunction != null
+                ? () => widget.showPopupMenuFunction!(currentPopupPosition)
+                : null,
             onTap: widget.onTap,
             child: Container(
               color: widget.tileColor,
@@ -93,5 +97,3 @@ class _SimpleExpanderTileState extends State<SimpleExpanderTile> {
     );
   }
 }
-
-late RelativeRect currentPopupPosition;

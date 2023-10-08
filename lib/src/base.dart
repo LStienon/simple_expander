@@ -5,7 +5,7 @@ import 'package:simple_expander/src/_content.dart';
 import '_header.dart';
 import 'tile.dart';
 
-typedef SaveExpandStateCallback = void Function();
+typedef SaveExpandStateCallback = void Function(bool);
 
 class SimpleExpander extends StatefulWidget {
   final String headerString;
@@ -74,7 +74,7 @@ class _SimpleExpanderState extends State<SimpleExpander> {
           : widget.baseHeight;
     });
     if (widget.saveStateFunction != null) {
-      widget.saveStateFunction!();
+      widget.saveStateFunction!(_isExpanded);
     }
   }
 
