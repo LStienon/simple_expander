@@ -31,5 +31,16 @@
 ## 0.1.5
 * after real situation test, had to improve some of the callbacks argument definitions
 
+## 0.1.6
+* trying to make a prettier readme file and pub dev page
+
+## 0.1.7
+* added "usage" section in the pub dev page
+
+## 0.1.8
+* struggling with gif image ...
+
+## 0.1.9
+* struggling with gif image ...
 
 

@@ -1,6 +1,6 @@
 name: simple_expander
-description: "This package is composed of a simple expansion tile that I made myself because the existing ones didn't satisfied me for a specific project I have"
-version: 0.1.5
+description: "This package is composed of a simple expansion tile that I made myself because the existing ones didn't satisfied me for a specific project I had"
+version: 0.1.9
 repository: https://github.com/LStienon/simple_expander.git
 
 environment:

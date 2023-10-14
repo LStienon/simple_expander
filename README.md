@@ -1,31 +1,52 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-My shot at making a very simple and not so much customizable expansion list
+A very simple Expansion Tile widget
 
 ## Features
-My shot at making a very simple and not so much customizable expansion list
+For a specific project I had, I wasn't satisfied with the buil-in Expansion Tile widget, nor with any I could find on pub dev, so I made my own !
+
+Here are the options you can customize :
+* header color
+* tile color
+* header title
+* tile title
+* tile subtitle
+* header trailing widget
+* tile trailing widget
+* overall animation duration
+* "overtile" duration animation
+* base height (for header and tiles)
+* base curvature (for both again)
+* longpress on tiles function (allows to enter a popup menu function)
+
+Look at this beauty : (I ain't buyest lmao)
+![](https://github.com/LStienon/pom_public_images/blob/main/simple_expander.gif)
 
 ## Getting started
-My shot at making a very simple and not so much customizable expansion list
+If you want to use simple_expander, you can either enter this command into your console :
+```bash
+flutter pub add simple_expander
+```
+Or add this line into your project's dependencies :
+```yaml
+dependencies:
+  simple_expander: ^0.1.7
+```
 
 ## Usage
-My shot at making a very simple and not so much customizable expansion list
-
 ```dart
-const like = 'sample';
+const example = SimpleExpander(
+    headerString: "Header title",
+    tiles: moreValues.map((oneSimpleObject) => SimpleExpanderTile(
+        title: oneSimpleObject.name,
+        subtitle: oneSimpleObject.secondName,
+        onTap: () async {
+          log('onTap function for simple_expander_tile with id : ${oneSimpleObject.id}');
+        }
+    )).toList(),
+);
+
+// WITH "oneSimpleObject" BEING INSTANCES YOU LOOP OVER TO FEED YOUR TILES
 ```
 
 ## Additional information
-My shot at making a very simple and not so much customizable expansion list
+Reality check : I'm still an amateur in the matter of creating flutter packages, and it shows. This package has flaws and if you use it, feel free to report them on the public github repo. It is not super customizable, and I might try to improve this in the future (maybe).
 
